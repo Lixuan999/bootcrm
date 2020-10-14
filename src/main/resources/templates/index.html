@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>基于农林水员工合并管理系统</title>
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link th:href="@{/css/signin.css}" rel="stylesheet">
+	<style>
+		body{
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to bottom right, #000, #2073c2 60%, #d666ff);
+			overflow: hidden;
+		}
+		span{
+			display: block;
+			position: absolute;
+			border-radius: 50%;
+			box-shadow: 0.4px 0.4px 0.4px 0px #fff;
+		}
+	</style>
+</head>
+
+<body class="text-center">
+	<form class="form-signin" th:action="@{/user/login}">
+	<img class="mb-4" th:src="@{/img/bootstrap-solid.svg}" alt="" width="144" height="144">
+	<p class="mt-5 mb-3 text-muted" th:text="#{login.text}" >致我亲爱的珍珍</p>
+	<h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+
+	<label class="sr-only">Username</label>
+	<input type="text" name="username" class="form-control" th:placeholder="#{login.username}" required="" autofocus="">
+	<label class="sr-only">Password</label>
+	<input type="password" name="password" class="form-control" th:placeholder="#{login.password}" required="">
+	<!--/*@thymesVar id="msg" type="java"*/-->
+	<p style="color: red" th:text="${msg}"></p>
+	<div class="checkbox mb-3">
+		<label>
+			<input type="checkbox" th:text="#{login.remember}">
+		</label>
+	</div>
+	<button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.btn}">1Sign in</button>
+	<p class="mt-5 mb-3 font-weight-normal">© 2020-2021</p>
+	<!--这里传入参数不需要使用?使用key=value-->
+	<a class="mt-9 mb-3 font-weight-normal" th:href="@{/index.html(x='zh_CN')}">中文</a>
+	<a class="mt-1 mb-3 font-weight-normal" th:href="@{/index.html(x='en_US')}">English</a>
+</form>
+	<script>
+		window.onload = function(){
+			var screenW = document.documentElement.clientWidth;
+			var screenH = document.documentElement.clientHeight;
+			var colorArr = ['#fff','skyblue','orange'];
+			console.log(screenW);
+			for( var i=0; i<800; i++ ){
+				var span = document.createElement('span');
+				var width = Math.random() * 3;
+				var colorIndex = parseInt(Math.random() * 3);
+				var x = parseInt(Math.random() * screenW);
+				var y = parseInt(Math.random() * screenH);
+				span.style.width = parseInt(width) + 'px';
+				span.style.height = parseInt(width) + 'px';
+				span.style.background = colorArr[colorIndex];
+				span.style.left = x + 'px';
+				span.style.top = y + 'px';
+
+				document.body.appendChild(span);
+			}
+		}
+	</script>
+</body>
+
+</html>
